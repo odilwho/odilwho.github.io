@@ -85,9 +85,12 @@ function getWindowContent(app) {
     <div class="win-body scrollable">
       <h3>My Favorites</h3>
       <p>Here are some of the things I like ♡</p>
-      <img src="assets/tribbie.jpg" alt="hsr" style="width: 300px; height: 300px;"><p>A game I play often is HSR, my main DPS is Phainon. Other than HSR I like playing REVERSE:1999 too. </p>
+      <img src="assets/tribbie.jpg" alt="hsr" style="width: 300px; height: 300px;"><p>A game I play often is HSR, my main DPS is Phainon.</p>
+      <p>Other than HSR I like playing REVERSE:1999 too.</p>
       <img src="assets/noo.jpg" alt="noodle" style="width: 300px; height: 300px;"><p>I love eating noodles, especially the spicy ones.</p>
-      <img src="assets/tig.jpg" alt="tiger" style="width: 300px; height: 300px;"><p>My favorite animal. Why? Well because they're cute and also amazing in the same time, other than that it's because I was born in the year of the tiger.</p>
+      <img src="assets/tig.jpg" alt="tiger" style="width: 300px; height: 300px;"><p>My favorite animal.</p> 
+      <p>Why? Well because they're cute and also amazing in the same time,</p> 
+      <p>Other than that it's because I was born in the year of the tiger.</p>
     </div>`;
 
     return "";
@@ -126,6 +129,7 @@ win.innerHTML = `
     <div class="resize-handle e"></div>
     <div class="resize-handle w"></div>
 `;
+
 
 
 const carousel = new bootstrap.Carousel('#myCarousel')
