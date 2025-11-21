@@ -1,1 +1,42 @@
-<h1>Odilwho</h1> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odilwho website </title>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Kodchasan:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles/index.css">
+</head>
+<body>
+    <!-- Background -->
+    <div id="background-art"></div>
+    <img src="assets/dawg.png.gif" class="background-art" alt="Background">
+
+    <!-- Cat -->
+    <img src="assets/cat.png.gif" class="cat" alt="Cute Cat">
+
+    <!-- Empty Desktop Message -->
+    <div id="empty-desktop-message">Welcome to my website! ♡</div>
+
+    <!-- Dark Mode Toggle -->
+    <button id="darkModeBtn">🌙</button>
+
+    <!-- Dock -->
+    <div class="dock">
+        <button onclick="openWindow('home')" class="dock-app">🏠 Home</button>
+        <button onclick="openWindow('about')" class="dock-app">🌸 About</button>
+        <button onclick="openWindow('favorites')" class="dock-app">📁 My Favorites</button>
+    </div>
+
+    <!-- Sounds -->
+    <audio id="openSound" src="assets/open.mp3"></audio>
+    <audio id="closeSound" src="assets/close.mp3"></audio>
+
+    <!-- JS -->
+    <script src="scripts/index.js"></script>
+</body>
+</html>

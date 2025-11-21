@@ -1,0 +1,268 @@
+/* =========================================
+   GLOBAL
+========================================= */
+html, body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+    font-family: "Kodchasan", sans-serif;
+
+    background: #fdeef3;
+    transition: background 0.4s ease, color 0.4s ease;
+    position: relative;
+}
+
+/* DARK OVERLAY (applies only in dark mode) */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: 0;            /* Light mode */
+    pointer-events: none;
+    transition: opacity 0.4s ease;  /* smooth fade */
+    z-index: 0;
+}
+
+body.dark::before {
+    opacity: 0.45;         /* Darkness intensity */
+}
+
+/* DARK MODE: darken background image */
+body.dark .background-art {
+    filter: brightness(0.5);
+    transition: filter 0.4s ease; /* smooth fade */
+}
+.background-art {
+    transition: filter 0.4s ease;
+}
+
+
+/* =========================================
+   BACKGROUND ART
+========================================= */
+.background-art {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#fdeef3, #fff7fb);
+    z-index: 1;
+    pointer-events: none;
+    transition: background 0.4s ease;
+}
+
+body.dark .background-art {
+    background: linear-gradient(#2e2a2b, #3a3436);
+}
+
+/* =========================================
+   CAT
+========================================= */
+.cat {
+    position: fixed;
+    right: 40px;
+    transform: translateX(-50%) scale(1.3);
+    bottom: 25px;
+    width: 170px;
+    opacity: 0.9;
+    z-index: 2;
+    user-select: none;
+    transition: opacity 0.4s ease;
+}
+
+body.dark .cat {
+    opacity: 0.75;
+}
+
+/* =========================================
+   EMPTY DESKTOP MESSAGE
+========================================= */
+#empty-desktop-message {
+    position: fixed;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    color: #ffffff;
+    opacity: 0.8;
+    z-index: 3;
+    transition: opacity 0.4s ease, color 0.4s ease;
+}
+
+.hidden {
+    opacity: 0;
+}
+
+body.dark #empty-desktop-message {
+    color: #e8d9e1;
+}
+
+/* =========================================
+   WINDOW
+========================================= */
+.window {
+    position: absolute;
+    min-width: 320px;
+    min-height: 200px;
+    background: #ffffffcc;
+    border-radius: 18px;
+    border: 2px solid #C64304;
+    box-shadow: 0 12px 22px rgba(140, 110, 125, 0.25);
+    overflow: hidden;
+    z-index: 5;
+    backdrop-filter: blur(12px);
+
+    animation: fadeIn 0.35s ease;
+    transition: background 0.4s ease, border-color 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.92); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+body.dark .window {
+    background: #3a3436cc;
+    border-color: #F5BE71 ;
+}
+
+/* =========================================
+   TITLEBAR
+========================================= */
+.titlebar {
+    background: #c67e47;
+    padding: 10px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: grab;
+    transition: background 0.4s ease;
+}
+
+.titlebar span {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+body.dark .titlebar {
+    background: #5a4f55;
+}
+
+/* =========================================
+   CLOSE BUTTON
+========================================= */
+.close-btn {
+    background: #FBE2A9;
+    color: #C64304;
+    border: none;
+    border-radius: 6px;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.close-btn:hover {
+    background: #B26F18;
+}
+
+/* =========================================
+   WINDOW BODY
+========================================= */
+.win-body {
+    padding: 20px;
+    color: #6b5860;
+    transition: color 0.4s ease;
+}
+
+body.dark .win-body {
+    color: #e8d9e1;
+}
+
+.scrollable {
+  max-height: 300px; 
+  overflow-y: auto;  
+  overflow-x: hidden; 
+  padding-right: 10px; 
+}
+
+/* =========================================
+   DOCK
+========================================= */
+.dock {
+    position: fixed;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%) scale(1.3);
+    transform-origin: center bottom;
+
+    background: #fbe2a981;
+    backdrop-filter: blur(10px);
+    border: 2px solid #C64304;
+    padding: 10px 18px;
+    border-radius: 25px;
+    display: flex;
+    gap: 12px;
+    z-index: 10;
+    transition: background 0.4s ease, border-color 0.4s ease;
+}
+
+
+body.dark .dock {
+    background: #3a3436cc;
+    border-color: #F5BE71;
+}
+
+/* =========================================
+   DOCK APPS
+========================================= */
+.dock-app {
+    background: #FBE2A9;
+    border: 2px solid #C64304;
+    border-radius: 15px;
+    padding: 10px 16px;
+    cursor: pointer;
+    transition: 0.2s ease, background 0.4s ease, border-color 0.4s ease;
+}
+
+.dock-app:hover {
+    background: #F5BE71;
+}
+
+body.dark .dock-app {
+    background: #5a4f55;
+    border-color: #F5BE71;
+}
+
+body.dark .dock-app:hover {
+    background: #6a5a61;
+}
+
+
+/* =========================================
+   DARK MODE BUTTON
+========================================= */
+#darkModeBtn {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background: #FBE2A9;
+    border: 2px solid #F16B05;
+    border-radius: 12px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    z-index: 20;
+    transition: background 0.4s ease, border-color 0.4s ease, color 0.4s ease;
+}
+
+body.dark #darkModeBtn {
+    background: #5a4f55;
+    border-color: #F5BE71;
+    color: #B26F18 ;
+}
+
+
