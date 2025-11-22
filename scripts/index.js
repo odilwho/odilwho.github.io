@@ -77,13 +77,13 @@ function getWindowContent(app) {
       <h1>About Me</h1>
       <p>Hello! I'm Odilwho — I am 15 years old and I'm in 10th Grade.</p>
       <p>I do Digital Art, Graphic Design, and Programming. </p>
-      <img src="assets/Profile.jpg" alt="my pfp" style="width: 300px; height: 300px;">
+      <img src="assets/Profile.jpg" alt="my pfp" style="width: 250px; height: 250px;">
     </div>`;
 
     if (app === "favorites")
         return `
     <div class="win-body scrollable">
-      <h3>My Favorites</h3>
+      <h1>My Favorites</h1>
       <p>Here are some of the things I like ♡</p>
       <img src="assets/tribbie.jpg" alt="hsr" style="width: 300px; height: 300px;"><p>A game I play often is HSR, my main DPS is Phainon.</p>
       <p>Other than HSR I like playing REVERSE:1999 too.</p>
@@ -133,3 +133,4 @@ win.innerHTML = `
 
 
 const carousel = new bootstrap.Carousel('#myCarousel')
+
