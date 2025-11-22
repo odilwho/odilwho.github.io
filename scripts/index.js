@@ -135,7 +135,7 @@ function getWindowContent(app) {
                 <div class="about-card">
                     <img src="assets/noo.jpg" style="width: 300px; height: 300px;">
                     <h3>🍜 Food</h3>
-                    <p>Love eating noodles every once a red moon.</p>
+                    <p>Love eating noodles once every red moon.</p>
                 </div>
 
                 <div class="about-card">
@@ -264,3 +264,4 @@ function initPolaroidCarousel(win) {
   // init
   show(0);
 }
+
