@@ -94,18 +94,18 @@ function getWindowContent(app) {
       <p>Hello! I'm Odilwho — I am 15 years old and I'm in 10th Grade.</p>
       <p>I do Digital Art, Graphic Design, and Programming. </p>
       <img src="assets/Profile.jpg" alt="my pfp" style="width: 300px; height: 300px;">
-      <h2>My Hobbies!</h2>
+      <h2>My Hobbies!𖹭</h2>
         <!-- About content (use inside your About window HTML) -->
         <div class="polaroid-carousel">
          <div class="polaroid-frame">
          <button class="arrow left">‹</button>
-        <div class="polaroid active" data-caption="Playing Cello">
+        <div class="polaroid active" data-caption="Playing Cello 𓏲ּ𝄢">
          <img src="assets/cello.jpg" alt="cello">
         </div>
-        <div class="polaroid" data-caption="Gaming!">
+        <div class="polaroid" data-caption="Gaming!👾">
         <img src="assets/game.gif" alt="gamin">
         </div>
-        <div class="polaroid" data-caption="Drawing">
+        <div class="polaroid" data-caption="Drawing 🎨🖌️">
         <img src="assets/art.jpg" alt="draw">
         </div>
         <button class="arrow right">›</button>
@@ -264,4 +264,5 @@ function initPolaroidCarousel(win) {
   // init
   show(0);
 }
+
 
