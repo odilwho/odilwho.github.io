@@ -94,7 +94,7 @@ function getWindowContent(app) {
       <p>Hello! I'm Odilwho — I am 15 years old and I'm in 10th Grade.</p>
       <p>I do Digital Art, Graphic Design, and Programming. </p>
       <img src="assets/Profile.jpg" alt="my pfp" style="width: 300px; height: 300px;">
-      <h2>My Hobbies!𖹭</h2>
+      <h2 style="text-align:center;">My Hobbies!𖹭</h2>
         <!-- About content (use inside your About window HTML) -->
         <div class="polaroid-carousel">
          <div class="polaroid-frame">
@@ -264,6 +264,7 @@ function initPolaroidCarousel(win) {
   // init
   show(0);
 }
+
 
 
 
