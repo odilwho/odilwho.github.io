@@ -118,7 +118,7 @@ function getWindowContent(app) {
     return `
         <div class="win-body scrollable">
 
-            <h2 class="section-title">My Favorites ♡</h2>
+            <h1 class="section-title" style="text-align:center;">My Favorites ♡</h1>
             <p style="text-align:center; max-width:400px; margin:0 auto 20px; color:#6b5860;">
                 Here are three things that make me super happy - that makes me, me:
             </p>
@@ -264,5 +264,6 @@ function initPolaroidCarousel(win) {
   // init
   show(0);
 }
+
 
 
