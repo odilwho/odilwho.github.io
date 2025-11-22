@@ -265,4 +265,206 @@ body.dark #darkModeBtn {
     color: #B26F18 ;
 }
 
+/* -----------------------------------
+      PASTEL POLAROID CAROUSEL
+----------------------------------- */
+.polaroid-carousel {
+    position: relative;
+    width: 100%;
+    height: 240px;
+    margin-top: 15px;
+}
+
+.polaroid-stack {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.polaroid {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 180px;
+    height: 220px;
+    transform: translateX(-50%);
+    object-fit: cover;
+    padding: 12px;
+    background: #fffdfd;
+    border: 2px solid #ed8b40;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(255,180,210,0.35);
+    transition: transform 0.45s ease, opacity 0.5s ease;
+    opacity: 0;
+}
+
+.polaroid:nth-child(1) { transform: translateX(-50%) rotate(-6deg); }
+.polaroid:nth-child(2) { transform: translateX(-50%) rotate(4deg); }
+.polaroid:nth-child(3) { transform: translateX(-50%) rotate(-3deg); }
+
+/* The visible polaroid */
+.polaroid.active {
+    opacity: 1;
+}
+
+/* Buttons */
+.pol-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #de9758;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0.85;
+    transition: 0.2s;
+    z-index: 20;
+}
+
+.pol-btn:hover {
+    background: #ffd5a8;
+}
+
+.pol-btn.left { left: 10px; }
+.pol-btn.right { right: 10px; }
+
+/* -------------------------
+   POLAROID — FIXED CENTERED
+-------------------------- */
+
+.polaroid-carousel {
+  width: 100%;
+  text-align: center;
+  margin-top: 8px;
+}
+
+.polaroid-frame {
+  position: relative;
+  width: 260px;       /* adjust if you want bigger/smaller */
+  height: 330px;
+  margin: 0 auto;
+  display: block;
+}
+
+/* stack cards centered in the frame */
+.polaroid {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 220px;
+  height: 280px;
+  transform: translate(-50%, -50%) rotate(-3deg) scale(0.92);
+  transform-origin: center center;
+  background: #f7d7a5;
+  padding: 12px;
+  border-radius: 10px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+  opacity: 0;
+  transition: transform 0.38s ease, opacity 0.32s ease;
+  cursor: pointer;
+}
+
+/* explicit image sizing */
+.polaroid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+}
+
+/* small layered rotations for visual variety (center still stays center) */
+.polaroid:nth-child(1) { transform: translate(-50%, -50%) rotate(-6deg) scale(0.92); }
+.polaroid:nth-child(2) { transform: translate(-50%, -50%) rotate(4deg) scale(0.92); }
+.polaroid:nth-child(3) { transform: translate(-50%, -50%) rotate(-2deg) scale(0.92); }
+/* add more nth-child rules if you have more images */
+
+/* active (visible) card is perfectly centered and sits on top */
+.polaroid.active {
+  opacity: 1;
+  transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  z-index: 50;
+}
+
+/* arrows inside frame (perfectly vertically centered) */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #da5e00;
+  border: 2px solid #ffa952;
+  border-radius: 10px;
+  padding: 6px 12px;
+  font-size: 1.4rem;
+  cursor: pointer;
+  z-index: 60;
+}
+.arrow.left { left: 6px; }
+.arrow.right { right: 6px; }
+.arrow:hover { background: #cda478; }
+
+/* caption sits tightly under the frame */
+.polaroid-caption {
+  margin-top: 8px;
+  font-size: 1.05rem;
+  color: #623317;
+  line-height: 1.2;
+  font-weight: 500;
+}
+
+/* -----------------------------
+        ABOUT CARDS (3)
+----------------------------- */
+
+.favorites-card-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 18px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.favorites-card {
+    background: #ffffffdd;
+    border: 2px solid #f4ced9;
+    border-radius: 16px;
+    padding: 14px;
+    text-align: center;
+    box-shadow: 0 6px 16px rgba(140,110,125,0.18);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.favorites-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px rgba(140,110,125,0.22);
+}
+
+.favorites-card img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
+
+.favorites-card h3 {
+    margin: 6px 0;
+    color: #a26d7d;
+    font-weight: 600;
+}
+
+.favorites-card p {
+    font-size: 0.9rem;
+    color: #6b5860;
+}
+
+/* Dark Mode Match */
+body.dark .favorites-card {
+    background: #3a3436cc;
+    border-color: #a78c97;
+}
 
