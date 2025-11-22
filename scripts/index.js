@@ -27,6 +27,22 @@ function openWindow(app) {
     document.getElementById("empty-desktop-message").classList.add("hidden");
 
     win.querySelector(".close-btn").addEventListener("click", () => closeWindow(win));
+
+    document.body.appendChild(win);
+    
+    if (app === "about") {
+    const first = win.querySelector(".polaroid");
+    if (first) first.classList.add("active");
+
+    if (app === "about") {
+    initPolaroidCarousel(win);
+
+    
+}
+
+}
+
+
 }
 
 function closeWindow(win) {
@@ -73,25 +89,66 @@ function getWindowContent(app) {
 
     if (app === "about")
         return `<h3>
-    <div class="win-body">
+    <div class="win-body scrollable">
       <h1>About Me</h1>
       <p>Hello! I'm Odilwho — I am 15 years old and I'm in 10th Grade.</p>
       <p>I do Digital Art, Graphic Design, and Programming. </p>
-      <img src="assets/Profile.jpg" alt="my pfp" style="width: 250px; height: 250px;">
+      <img src="assets/Profile.jpg" alt="my pfp" style="width: 300px; height: 300px;">
+      <h2>My Hobbies!</h2>
+        <!-- About content (use inside your About window HTML) -->
+        <div class="polaroid-carousel">
+         <div class="polaroid-frame">
+         <button class="arrow left">‹</button>
+        <div class="polaroid active" data-caption="Playing Cello">
+         <img src="assets/cello.jpg" alt="cello">
+        </div>
+        <div class="polaroid" data-caption="Gaming!">
+        <img src="assets/game.gif" alt="gamin">
+        </div>
+        <div class="polaroid" data-caption="Drawing">
+        <img src="assets/art.jpg" alt="draw">
+        </div>
+        <button class="arrow right">›</button>
+        </div>
+        <div class="polaroid-caption">Me enjoying a sunny day!</div>
+      </div>
     </div>`;
 
-    if (app === "favorites")
-        return `
-    <div class="win-body scrollable">
-      <h1>My Favorites</h1>
-      <p>Here are some of the things I like ♡</p>
-      <img src="assets/tribbie.jpg" alt="hsr" style="width: 300px; height: 300px;"><p>A game I play often is HSR, my main DPS is Phainon.</p>
-      <p>Other than HSR I like playing REVERSE:1999 too.</p>
-      <img src="assets/noo.jpg" alt="noodle" style="width: 300px; height: 300px;"><p>I love eating noodles, especially the spicy ones.</p>
-      <img src="assets/tig.jpg" alt="tiger" style="width: 300px; height: 300px;"><p>My favorite animal.</p> 
-      <p>Why? Well because they're cute and also amazing in the same time,</p> 
-      <p>Other than that it's because I was born in the year of the tiger.</p>
-    </div>`;
+    if (app === "favorites") {
+    return `
+        <div class="win-body scrollable">
+
+            <h2 class="section-title">My Favorites ♡</h2>
+            <p style="text-align:center; max-width:400px; margin:0 auto 20px; color:#6b5860;">
+                Here are three things that make me super happy - that makes me, me:
+            </p>
+
+            <div class="about-card-group">
+
+                <div class="about-card">
+                    <img src="assets/tribbie.jpg" style="width: 300px; height: 300px;">
+                    <h3>🎮 Game</h3>
+                    <p>I've been playing HSR a lot lately, my main DPS is Phainon.</p>
+                    <p>Other than HSR, I like playing REVERSE:1999 ♡</p>
+                </div>
+
+                <div class="about-card">
+                    <img src="assets/noo.jpg" style="width: 300px; height: 300px;">
+                    <h3>🍜 Food</h3>
+                    <p>Love eating noodles every once a red moon.</p>
+                </div>
+
+                <div class="about-card">
+                    <img src="assets/tig.jpg" style="width: 300px; height: 300px;">
+                    <h3>🐯 Animal</h3>
+                    <p>Tigers are my goats ♡. They're like big cats yet more vicious.</p>
+                </div>
+
+            </div>
+            
+        </div>
+    `;
+}
 
     return "";
 }
@@ -130,7 +187,80 @@ win.innerHTML = `
     <div class="resize-handle w"></div>
 `;
 
+/* -----------------------------------
+     POLAROID CAROUSEL LOGIC
+----------------------------------- */
+document.addEventListener("click", function(e) {
+    if (e.target.classList.contains("pol-btn")) {
+        const win = e.target.closest(".window");
+        const photos = win.querySelectorAll(".polaroid");
 
+        if (!photos.length) return;
 
-const carousel = new bootstrap.Carousel('#myCarousel')
+        let index = parseInt(win.getAttribute("data-pol-index") || "0");
 
+        if (e.target.classList.contains("left")) {
+            index = (index - 1 + photos.length) % photos.length;
+        } else {
+            index = (index + 1) % photos.length;
+        }
+
+        // hide all
+        photos.forEach(p => p.classList.remove("active"));
+
+        // show new one
+        photos[index].classList.add("active");
+
+        // save index
+        win.setAttribute("data-pol-index", index);
+    }
+});
+
+/* ---------------------------------------------------------
+   POLAROID CAROUSEL LOGIC
+--------------------------------------------------------- */
+function initPolaroidCarousel(win) {
+  const frame = win.querySelector(".polaroid-frame");
+  if (!frame) return;
+
+  const polaroids = Array.from(frame.querySelectorAll(".polaroid"));
+  const left = frame.querySelector(".arrow.left");
+  const right = frame.querySelector(".arrow.right");
+  const captionBox = win.querySelector(".polaroid-caption");
+
+  if (!polaroids.length) return;
+
+  let index = 0;
+
+  function show(i) {
+    polaroids.forEach(p => p.classList.remove("active"));
+    polaroids[i].classList.add("active");
+    if (captionBox) captionBox.textContent = polaroids[i].dataset.caption || "";
+    // ensure active is top visual
+    polaroids[i].style.zIndex = 10;
+  }
+
+  // arrows
+  if (right) right.addEventListener("click", (e) => {
+    e.stopPropagation();
+    index = (index + 1) % polaroids.length;
+    show(index);
+  });
+  if (left) left.addEventListener("click", (e) => {
+    e.stopPropagation();
+    index = (index - 1 + polaroids.length) % polaroids.length;
+    show(index);
+  });
+
+  // click to next
+  polaroids.forEach(p => {
+    p.addEventListener("click", (e) => {
+      e.stopPropagation();
+      index = (index + 1) % polaroids.length;
+      show(index);
+    });
+  });
+
+  // init
+  show(0);
+}
